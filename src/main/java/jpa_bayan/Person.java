@@ -40,7 +40,7 @@ public class Person {
    private String user_name;
   
     @OneToMany(cascade=CascadeType.ALL,mappedBy = "person")
-    //@JoinColumn(name="testcase_id")
+    //@JoinColumn(name="id")
   
     private List<TestCase>  testcases;
 

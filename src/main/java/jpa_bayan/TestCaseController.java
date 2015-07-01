@@ -21,7 +21,7 @@ import jpa_bayan.TestCase;
 import jpa_bayan.TestCaseDAO;
  
 @Controller
-@RequestMapping(value= "/testcases") 
+@RequestMapping(value= "/tc") 
 public class TestCaseController {
 	 
     private TestCaseDAO testCaseDao;
@@ -43,7 +43,7 @@ public class TestCaseController {
     @RequestMapping(value= "/testcase/add", method = RequestMethod.POST)
     public String addTestCase(@ModelAttribute("testcase") TestCase tc){
          
-        if(tc.getTestcase_id() == 0){
+        if(tc.getId() == 0){
             //new person, add it
             this.testCaseDao.addTestCase(tc);
         }else{
@@ -51,7 +51,7 @@ public class TestCaseController {
             this.testCaseDao.updateTestCase(tc);
         }
          
-        return "redirect:/testcases";
+        return "redirect:/tc/testcases";
          
     }
      
@@ -59,7 +59,7 @@ public class TestCaseController {
     public String removeTestCase(@PathVariable("id") int id){
          
         this.testCaseDao.removeTestCase(id);
-        return "redirect:/testcases";
+        return "redirect:/tc/testcases";
     }
   
     @RequestMapping("/edit/{id}")

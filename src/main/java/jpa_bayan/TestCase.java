@@ -25,9 +25,9 @@ public class TestCase {
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO) 
    
-   private int testcase_id;
+   private int id;
 
-   private String testcase_name;
+   private String name;
   
    
    
@@ -38,20 +38,20 @@ public class TestCase {
      
      public TestCase(){}
 
-    public void setTestcase_id(int testcase_id) {
-        this.testcase_id = testcase_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getTestcase_id() {
-        return testcase_id;
+    public int getId() {
+        return id;
     }
 
-    public void setTestcase_name(String testcase_name) {
-        this.testcase_name = testcase_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getTestcase_name() {
-        return testcase_name;
+    public String getName() {
+        return name;
     }
 
     public Person getPerson() {

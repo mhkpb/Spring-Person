@@ -18,6 +18,7 @@
 </h1>
  
 <c:url var="addAction" value="/p/person/add" ></c:url>
+<c:url var="addTestCaseAction" value="/tc/testcases" ></c:url>
  
 <form:form action="${addAction}" commandName="person">
 <table>
@@ -85,6 +86,7 @@
             <form:input path="user_name" />
         </td> 
     </tr>
+    
     <tr>
         <td colspan="2">
             <c:if test="${!empty person.firstName}">
@@ -97,8 +99,12 @@
             </c:if>
         </td>
     </tr>
-</table>  
+</table> 
+
+
 </form:form>
+
+
 <br>
 <h3>Persons List</h3>
 <c:if test="${!empty listPersons}">
