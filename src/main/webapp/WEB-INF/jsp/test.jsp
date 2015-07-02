@@ -14,14 +14,14 @@
 </head>
 <body>
 <h1>
-    Add a TestCase
+    Add a Test
 </h1>
  
-<c:url var="addAction" value="/tc/testcase/add" ></c:url>
+<c:url var="addAction" value="/t/test/add" ></c:url>
  
-<form:form action="${addAction}" commandName="testcase">
+<form:form action="${addAction}" commandName="test">
 <table>
-    <c:if test="${!empty testcase.name}">
+    <c:if test="${!empty test.date}">
     <tr>
         <td>
             <form:label path="id">
@@ -36,65 +36,58 @@
     </c:if>
     <tr>
         <td>
-            <form:label path="name">
-                <spring:message text="Name"/>
+            <form:label path="date">
+                <spring:message text="Date"/>
             </form:label>
         </td>
         <td>
-            <form:input path="name" />
+            <form:input path="date" />
+        </td> 
+    </tr>
+     <tr>
+        <td>
+            <form:label path="clock">
+                <spring:message text="Clock"/>
+            </form:label>
+        </td>
+        <td>
+            <form:input path="clock" />
         </td> 
     </tr>
    
     <tr>
         <td colspan="2">
-            <c:if test="${!empty testcase.name}">
+            <c:if test="${!empty test.date}">
                 <input type="submit"
-                    value="<spring:message text="Edit Testcase"/>" />
+                    value="<spring:message text="Edit Test"/>" />
             </c:if>
-            <c:if test="${empty testcase.name}">
+            <c:if test="${empty test.date}">
                 <input type="submit"
-                    value="<spring:message text="Add Testcase"/>" />
+                    value="<spring:message text="Add Test"/>" />
             </c:if>
         </td>
     </tr>
 </table>  
 </form:form>
 <br>
-
-<%-- 
-<h2>Select Person</h2>
- 
-    <select>
-        
-  <option value= " ${person.firstName} " >  ${person.firstName}  </option>
-
-  
-       </select>
-       
- 
- 
-    --%>
-   
-   
-
-
-<h3>Testcases List</h3>
-<c:if test="${!empty listTestCases}">
+<h3>Tests List</h3>
+<c:if test="${!empty listTests}">
     <table class="tg">
     <tr>
-        <th width="80">Testcase ID</th>
-        <th width="120">Testcase Name</th>
+        <th width="80">Teste ID</th>
+        <th width="120">Teste Date</th>
+        <th width="120">Teste Clock</th>
       
         <th width="60">Edit</th>
         <th width="60">Delete</th>
     </tr>
-    <c:forEach items="${listTestCases}" var="testcase">
+    <c:forEach items="${listTests}" var="testcase">
         <tr>
-            <td>${testcase.id}</td>
-            <td>${testcase.name}</td>
+            <td>${test.id}</td>
+            <td>${test.date}</td>
         
-            <td><a href="<c:url value='/tc/edit/${testcase.id}' />" >Edit</a></td>
-            <td><a href="<c:url value='/tc/remove/${testcase.id}' />" >Delete</a></td>
+            <td><a href="<c:url value='/tc/edit/${test.id}' />" >Edit</a></td>
+            <td><a href="<c:url value='/tc/remove/${test.id}' />" >Delete</a></td>
         </tr>
     </c:forEach>
     </table>

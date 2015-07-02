@@ -40,9 +40,9 @@ public class Person {
    private String user_name;
   
     @OneToMany(cascade=CascadeType.ALL,mappedBy = "person")
-    //@JoinColumn(name="id")
-  
     private List<TestCase>  testcases;
+    @OneToMany(cascade=CascadeType.ALL,mappedBy = "person")
+    private List<Test>   Tests;
 
     public Person() {
     }
@@ -75,6 +75,15 @@ public class Person {
         this.testcases = testcases;
     }
 
+    public void setTests(List<Test> Tests) {
+		this.Tests = Tests;
+	}
+    public List<Test> getTests() {
+		return Tests;
+	}
+   
+    
+    
     
 
     public String getUser_name() {
@@ -111,7 +120,7 @@ public class Person {
     @Override
     	public String toString() {
     		// TODO Auto-generated method stub
-    		return super.toString();
+    		return firstName; 
     	}
     
     

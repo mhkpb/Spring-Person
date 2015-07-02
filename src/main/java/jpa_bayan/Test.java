@@ -5,16 +5,12 @@
  */
 package jpa_bayan;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -24,24 +20,27 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-public class TestCase {
+public class Test {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	private String name;
+	private String date;
+	private String clock;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "testCase")
-	private List<Test> Tests;
-
+	@ManyToOne
+	private Person person;
+	
+	
 	
 	
 	@ManyToOne
-	// @JoinColumn(name = "person_id")
-	private Person person;
+	private TestCase testCase;
 
-	public TestCase() {
+	
+	
+	public Test() {
 	}
 
 	public void setId(int id) {
@@ -52,12 +51,20 @@ public class TestCase {
 		return id;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public String getClock() {
+		return clock;
 	}
 
-	public String getName() {
-		return name;
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public void setClock(String clock) {
+		this.clock = clock;
 	}
 
 	public Person getPerson() {
@@ -67,13 +74,11 @@ public class TestCase {
 	public void setPerson(Person person) {
 		this.person = person;
 	}
-/*
-	public List<Test> getTests() {
-		return Tests;
+	public TestCase getTestCase() {
+		return testCase;
+	}
+	public void setTestCase(TestCase testCase) {
+		this.testCase = testCase;
 	}
 
-	public void setTests(List<Test> Tests) {
-		this.Tests = Tests;
-	}
-*/
 }

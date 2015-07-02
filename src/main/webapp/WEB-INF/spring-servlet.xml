@@ -45,6 +45,8 @@
             <beans:list>
                 <beans:value>jpa_bayan.Person</beans:value>
                 <beans:value>jpa_bayan.TestCase</beans:value> 
+                <beans:value>jpa_bayan.Test</beans:value>
+              
             </beans:list>
         </beans:property>
         <beans:property name="hibernateProperties">
@@ -65,6 +67,13 @@
      <beans:bean id="testCaseDAO" class="jpa_bayan.TestCaseDAO">
         <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
     </beans:bean>
+    
+    <beans:bean id="testDAO" class="jpa_bayan.TestDAO">
+        <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+    </beans:bean>
+    
+    
+    
     
     
    
