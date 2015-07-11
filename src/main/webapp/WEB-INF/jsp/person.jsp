@@ -104,26 +104,6 @@
 </form:form>
 
 
-
-<%-- 
-<form:form action="${addTestCaseAction}" commandName="testcase">
- <c:if test="${!empty listTestCases}">
-  <select>
-    <c:forEach items="${listTestCases}" var="testcase">
-   
-       <option value= " ${testcase.name} " >  ${testcase.name}  </option>
-
-    </c:forEach>
-     </select>
-</c:if>
-</form:form> 
---%>
-
-
-
-
-
-
 <br>
 <h3>Persons List</h3>
 <c:if test="${!empty listPersons}">

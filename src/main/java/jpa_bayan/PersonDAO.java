@@ -15,7 +15,6 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
 import org.springframework.transaction.annotation.Transactional;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
@@ -64,6 +63,20 @@ public class PersonDAO {
          }
          return personsList;
      }
+     
+     @SuppressWarnings("unchecked")
+     @Transactional
+     public List<TestCase> listTestCases() {
+         Session session = this.sessionFactory.getCurrentSession();
+         List<TestCase> TestCasesList = session.createQuery("from TestCase").list();
+         for(TestCase tc : TestCasesList){
+           //  logger.info("TestCase List::"+tc);
+         }
+         return TestCasesList;
+     }
+     
+     
+     
   
      @Transactional
      public Person getPersonById(int id) {
@@ -82,6 +95,17 @@ public class PersonDAO {
          }
         // logger.info("Person deleted successfully, person details="+p);
      }
+
+
+
+
+	public Person getPerson(int id) {
+		
+		  Session session = this.sessionFactory.getCurrentSession();      
+	      Person p = (Person) session.get(Person.class, new Integer(id));
+	
+	         return p;
+	}
     
     
     

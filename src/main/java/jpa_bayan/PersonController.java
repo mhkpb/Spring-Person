@@ -9,11 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
- 
+
 import jpa_bayan.Person;
 import jpa_bayan.PersonDAO;
  
@@ -22,17 +24,24 @@ import jpa_bayan.PersonDAO;
 public class PersonController {
      
     private PersonDAO personDao;
+   
      
     @Autowired(required=true)
     //@Qualifier(value="personDao")
     public void setPersonService(PersonDAO  pd){
         this.personDao = pd;
     }
+    @InitBinder
+    public void initBinder(WebDataBinder binder)    {
+    binder.registerCustomEditor(Person.class, new P_PropertyEditor(personDao));
+    }
+ 
      
     @RequestMapping(value = "/persons", method = RequestMethod.GET)
     public String listPersons(Model model) {
         model.addAttribute("person", new Person());
         model.addAttribute("listPersons", this.personDao.listPersons());
+    
         return "person";
     }
      

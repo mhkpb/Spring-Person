@@ -11,7 +11,6 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-
 import org.springframework.transaction.annotation.Transactional;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
@@ -68,6 +67,15 @@ public class TestCaseDAO {
        //  logger.info("TestCase loaded successfully, TestCase details="+tc);
          return tc;
      }
+     
+    /* @Transactional
+     public Person getPersonById(int id) {
+         Session session = this.sessionFactory.getCurrentSession();      
+         Person p = (Person) session.get(Person.class, new Integer(id));
+       //  logger.info("Person loaded successfully, Person details="+p);
+         return p;
+     }*/
+  
   
      @Transactional
      public void removeTestCase(int id) {
